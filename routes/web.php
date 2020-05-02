@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,13 +14,17 @@
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('welcome');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
+Auth::routes();
+
+
+Route::group(['prefix'=>'provider',
+    'middleware' =>'auth'],function (){
+    Route::resource('email','EmailProviderController');
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/sendEmail','EmailProviderController@sendEmail');
