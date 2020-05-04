@@ -33,9 +33,12 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                @if (Auth::check())
 
                     <a href="{{route('email.index')}}" class="btn btn-success ml-5">Home</a>
                     <a href="{{route('scheduled')}}" class="btn btn-primary  ml-2">Scheduled Mails</a>
+
+                @endif
 
 
 
