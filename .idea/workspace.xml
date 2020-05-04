@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65e05bed-5cb3-467e-b2b7-758dc98d8957" name="Default Changelist" comment="" />
+    <list default="true" id="65e05bed-5cb3-467e-b2b7-758dc98d8957" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmailProviderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmailProviderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/EmailProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/email/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/email/email_template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/email/email_template.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,6 +158,7 @@
       <workItem from="1588108841582" duration="2729000" />
       <workItem from="1588279055615" duration="5809000" />
       <workItem from="1588371037128" duration="6125000" />
+      <workItem from="1588458783480" duration="26730000" />
     </task>
     <servers />
   </component>
@@ -165,10 +174,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="453" y="167" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1587859752633" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588376540783">
+    <state x="354" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588537975519">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588376540783" />
+    <state x="354" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1588537975519" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588525155142">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588525155142" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1588373145951">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -177,9 +190,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="378" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588371062962" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1587862112790">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1588543209450">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1587862112790" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1588543209450" />
   </component>
 </project>

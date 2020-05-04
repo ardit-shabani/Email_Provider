@@ -2,13 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\EmailProvider;
+use App\EmailsScheduled;
+use App\Jobs\EmailProviderQueue;
+use App\Mail\MailProvider;
+use Carbon\Carbon;
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use PharIo\Manifest\Email;
 
+
 class EmailProviderController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +32,15 @@ class EmailProviderController extends Controller
      */
     public function index()
     {
+
         return view('email.email');
+
+    }
+
+    public function scheduledMails(){
+
+        $mails =EmailsScheduled::where('user_id',auth()->id())->get();
+        return view('email.scheduled_mails',['mails' => $mails]);
     }
 
     /**
@@ -37,6 +61,69 @@ class EmailProviderController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        $data = $request->validate([
+
+            'to' => 'required|string',
+            'subject' => 'required|string',
+            'message' => 'required|string',
+            'schedule' => 'nullable|date_format:"Y-m-d H:i"'
+
+        ]);
+
+
+        $data['to'] = explode(';',$data['to']);
+
+
+        $emails = Validator::make($data,[
+            'to' => 'required|array|max:6',
+            'to.*' => 'email'
+        ])->validate();
+
+
+
+
+        if($request->get('schedule') == null){
+
+
+            foreach ($emails as $email){
+
+             Mail::send(new MailProvider($email,$data['subject'],$data['message']));
+
+            }
+
+
+            session()->flash('success','Email eshte derguar me sukses!');
+
+            return redirect(route('email.index'));
+
+
+
+        }else{
+
+            $date = Carbon::parse($data['schedule']);
+
+            $mail =  EmailsScheduled::create([
+
+
+                'user_id' => auth()->id(),
+                'to'=> json_encode($data['to']),
+                'subject' => $data['subject'],
+                'message' => $data['message'],
+                'scheduled_at' => $date
+
+            ]);
+
+
+            dd($mail);
+
+            EmailProviderQueue::dispatch($mail)->delay($date);
+        }
+
+        session()->flash('success','Email eshte derguar me sukses!');
+
+        return redirect(route('scheduled'));
 
 
     }
@@ -86,8 +173,8 @@ class EmailProviderController extends Controller
         //
     }
 
-    public function sendEmail(){
-        Mail::to('arditcaravella1@yahoo.com')->send(new EmailProvider('Ardit','Konjusha'));
-    }
+//    public function sendEmail(){
+//        Mail::to('arditcaravella1@yahoo.com')->send(new MailProvider('Ardit','Konjusha'));
+//    }
 
 }

@@ -1,15 +1,26 @@
 <html>
-<header>
+<head>
+    <title>Title of the document</title>
+</head>
 
-
-</header>
-<style>
-
-</style>
 <body>
+Hello everyone,
+<br>
+<br>
 
-<p>Hello</p>
+{{$content}}
 
 
+<br>
+<br>
+Best regards,
+<br>
+<br>
+
+
+{{env('APP_NAME','Cacttus Education')}}
 </body>
+
 </html>
+
+

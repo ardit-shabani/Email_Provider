@@ -20,11 +20,17 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::group(['prefix'=>'provider',
-    'middleware' =>'auth'],function (){
+Route::group([
+
+    'prefix'=>'provider',
+    'middleware' =>'auth'], function (){
+
     Route::resource('email','EmailProviderController');
+
+    Route::get('/scheduled', 'EmailProviderController@scheduledMails')->name('scheduled');
 });
 
 
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/sendEmail','EmailProviderController@sendEmail');
+

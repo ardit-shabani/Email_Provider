@@ -7,47 +7,52 @@
        <div class="row justify-content-center">
            <div class="col-md-8">
                <div class="card">
-                   <div class="card-header">Dashboard</div>
+                   <div class="card-header bg-info text-white text-center font-weight-bold " >Email Provider</div>
 
                    <div class="card-body">
-                       @if (session('status'))
+                       @if (session('success'))
                            <div class="alert alert-success" role="alert">
-                               {{ session('status') }}
+                               {{ session('success') }}
                            </div>
                        @endif
 
-                           <form action="submit" method="POST">
-
+                           <form  method="POST" action="{{route('email.store')}}">
+                               @csrf
 
                                <div class="form-group">
-                                    @csrf
                                    <label for="formGroupExampleInput">To</label>
-                                   <input type="text" class="form-control" id="to" placeholder="Emails" name="to">
+                                   <input type="text" class="form-control" id="to" placeholder="Emails" name="to" >
+
+
                                </div>
-
-
 
                                <div class="form-group">
                                    <label for="formGroupExampleInput2">Subject</label>
-                                   <input type="text" class="form-control" id="formGroupExampleInput2"
-                                          placeholder="Subject" name="subject">
-                               </div>
-                               <div class="form-group">
-                                   <label for="exampleFormControlTextarea1">Email</label>
-                                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
-                               </div>
-
-                               <div class="form-group">
-                                   <label for="published_at">Schedule</label>
-                                   <input type="text" name="published_at" id="published_at" class="form-control">
+                                   <input type="text" class="form-control  " id="subject "
+                                          placeholder="Subject" name="subject" required>
 
                                </div>
                                <div class="form-group">
-                                    <button class="btn btn-success">Submit</button>
+                                   <label for="email">Email</label>
+                                   <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+
+                               </div>
+
+                               <div class="form-group">
+                                   <label for="schedule">Schedule</label>
+                                   <input type="text" name="schedule" id="schedule" class="form-control"  >
+
+
+                               </div>
+                               <div class="form-group text-center " >
+                                    <button  type="submit" class="btn btn-success">Submit</button>
                                </div>
                            </form>
                    </div>
                </div>
+
+
+
            </div>
        </div>
    </div>
@@ -59,13 +64,17 @@
 
     <scrip src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js"></scrip>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script> flatpickr('#published_at',{
-        enableTime:true
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+
+    <script> flatpickr('#schedule',{
+        enableTime:true,
+        dateFormat: "Y-m-d H:i"
         })</script>
 
 
 @endsection
 @section('css')
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css">
 @endsection

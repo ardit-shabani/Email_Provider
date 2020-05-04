@@ -7,19 +7,25 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EmailProvider extends Mailable
+class MailProvider extends Mailable
 {
     use Queueable, SerializesModels;
+
+
+    public $content;
+
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($firstName,$lastName)
+    public function __construct($to,$subject,$content)
     {
-        $this->$firstName = $firstName;
-        $this->$lastName = $lastName;
+        $this->to($to);
+        $this->from('noreply@cacttus.com');
+        $this->subject($subject);
+        $this->content = $content;
     }
 
     /**
@@ -29,8 +35,6 @@ class EmailProvider extends Mailable
      */
     public function build()
     {
-        return $this->from('ardit@cacttus.com')
-            ->subject('TEST')
-            ->view('email.email_template');
+        return $this->view('email.email_template')->with('content',$this->content);
     }
 }
